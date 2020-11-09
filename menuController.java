@@ -33,8 +33,8 @@ public class menuController
     private ImageView imageChooser;
 
     @FXML
-    private ListView<String> ingredientList;
-    private String[] allIngredients = {"Lettuce", "Tomato", "Onions", "Cheese"};
+    private ListView<String> ingredientList;    
+    private ObservableList<String> fullList = FXCollections.observableArrayList("Lettuce", "Tomato", "Onions", "Cheese");
 
     @FXML
     private Button addButton;
@@ -46,7 +46,7 @@ public class menuController
     private Button clearButton;
 
     @FXML
-    private ListView<?> addedIngredients;
+    private ListView<String> addedIngredients;
 
     @FXML
     private TextField totalPrice;
@@ -88,6 +88,7 @@ public class menuController
     void sandwichChooser(ActionEvent event) 
     {
     	SandwichBox.getItems().addAll(sandwichType); 
+    	addedIngredients.setItems(fullList);
     	
     	if(SandwichBox.getValue() == "Burger")
     	{
