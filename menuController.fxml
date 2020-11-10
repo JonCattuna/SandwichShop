@@ -13,9 +13,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menuController">
    <children>
       <ComboBox fx:id="SandwichBox" layoutX="31.0" layoutY="58.0" onAction="#sandwichChooser" prefWidth="150.0" />
-      <ListView fx:id="setIngredients" layoutX="207.0" layoutY="39.0" prefHeight="90.0" prefWidth="114.0" />
+      <ListView fx:id="setIngredients" layoutX="207.0" layoutY="51.0" prefHeight="113.0" prefWidth="114.0" />
       <Text layoutX="66.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sandwich type" />
-      <Text layoutX="222.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set ingredients" wrappingWidth="84.53662109375" />
+      <Text layoutX="214.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set ingredients" wrappingWidth="121.59999999999991" />
       <ImageView fx:id="imageChooser" fitHeight="106.0" fitWidth="166.0" layoutX="376.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Desktop/1200px-RedDot_Burger.jpg" />
