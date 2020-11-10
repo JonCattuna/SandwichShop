@@ -37,7 +37,7 @@ public class Main extends Application
 			
 			menu.initialize();
 			
-			Scene scene = new Scene(root, 600, 500);
+			Scene scene = new Scene(root, 600, 600);
 			//menuController menu = loader.getController();
 			//AnchorPane root2 = (AnchorPane)FXMLLoader.load(getClass().getResource("order.fxml"));
 			//Scene scene2 = new Scene(root2, 600, 500);
