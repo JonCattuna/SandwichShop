@@ -1,3 +1,5 @@
+import java.io.File;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,32 +9,37 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class menuController {
 
 	@FXML
 	private ComboBox<String> SandwichBox;
+	//Image image = new Image("popeyes.jpg");
+	//File file = new File("popeyes.jpg");
+	
+	//Image image = new Image("popeyes.png");
 	// SandwichBox.setItems().addAll(
 	// "Burger",
 	// "Chicken",
 	// "Fish"
 	// s );
-	private String[] sandwichType = { "Burger", "Chicken", "Fish" };
+	private String[] sandwichType = {  "Chicken", "Burger", "Fish" };
 
 	@FXML
 	private ListView<String> setIngredients;
-	private ObservableList<String> BurgerList = FXCollections.observableArrayList("Cheese", "Onion", "Ketchup");
-	private ObservableList<String> ChickenList = FXCollections.observableArrayList("Cheese", "Lettuce", "Mayo");
-	private ObservableList<String> FishList = FXCollections.observableArrayList("TarTar", "Lettuce");
+	private ObservableList<String> BurgerList = FXCollections.observableArrayList("Beef Patty", "Bun", "Ketchup");
+	private ObservableList<String> ChickenList = FXCollections.observableArrayList("Fried Chicken", "Mayo", "Pickles");
+	private ObservableList<String> FishList = FXCollections.observableArrayList("Fried Cod", "TarTar", "Lettuce");
 
 	@FXML
 	private ImageView imageChooser;
+	
 
 	@FXML
 	private ListView<String> ingredientList;
-	private ObservableList<String> fullList = FXCollections.observableArrayList("Lettuce", "Tomato", "Onions",
-			"Cheese");
+	private ObservableList<String> fullList = FXCollections.observableArrayList("Lettuce", "Tomato", "Onions", "Bacon", "Pickles", "Musrooms", "Swiss", "American", "Spinach", "Cheddar");
 
 	@FXML
 	private Button addButton;
@@ -58,22 +65,34 @@ public class menuController {
 
 	@FXML
 	private TextArea orderPrint;
+	
+	private int counter = 0;
 
 	@FXML
-	void addToList(ActionEvent event) {
+	void addToList(ActionEvent event) 
+	{
 		//String item = ingredientList.getSelectionModel().getSelectedItem();
-
 		
-		if(ingredientList.getSelectionModel().getSelectedItem() != null)
+		if(ingredientList.getSelectionModel().getSelectedItem() != null && counter <6)
+		{
 			addList.add(ingredientList.getSelectionModel().getSelectedItem());
+			counter++;
+			fullList.remove(ingredientList.getSelectionModel().getSelectedItem());
+			addedIngredients.setItems(addList);
+		}
 		
-		fullList.remove(ingredientList.getSelectionModel().getSelectedItem());
-		addedIngredients.setItems(addList);
+		
 	}
 
 	@FXML
-	void addToOrder(ActionEvent event) {
-
+	void addToOrder(ActionEvent event) 
+	{
+		SandwichBox.getSelectionModel().selectFirst();
+		fullList.addAll(addList);
+		addList.removeAll(addList);
+		addedIngredients.setItems(addList);
+		ingredientList.setItems(fullList);
+		counter = 0;
 	}
 
 	@FXML
@@ -83,6 +102,8 @@ public class menuController {
 		addList.removeAll(addList);
 		addedIngredients.setItems(addList);
 		ingredientList.setItems(fullList);
+		SandwichBox.setValue(null);;
+		counter = 0;
 
 	}
 
@@ -93,6 +114,7 @@ public class menuController {
 		{
 			fullList.add(addedIngredients.getSelectionModel().getSelectedItem());
 			addList.remove(addedIngredients.getSelectionModel().getSelectedItem());
+			counter --;
 			
 		}
 		
@@ -103,20 +125,38 @@ public class menuController {
 	@FXML
 	void sandwichChooser(ActionEvent event) {
 
-		if (SandwichBox.getValue() == "Burger") {
+		if (SandwichBox.getValue() == "Burger") 
+		{
 			setIngredients.setItems(BurgerList);
+			//Image image = new Image("burger.png");
+			//imageChooser.setImage(image);
 		}
-		if (SandwichBox.getValue() == "Chicken") {
+		if (SandwichBox.getValue() == "Chicken") 
+		{
 			setIngredients.setItems(ChickenList);
+			///Image image = new Image("popeyes.png");
+			//imageChooser.setImage(image);
 		}
-		if (SandwichBox.getValue() == "Fish") {
+		if (SandwichBox.getValue() == "Fish") 
+		{
 			setIngredients.setItems(FishList);
+			//Image image = new Image("fillet.png");
+			//imageChooser.setImage(image);
 		}
 	}
 
-	void initialize() {
-
+	void initialize() 
+	{
+		
 		SandwichBox.getItems().addAll(sandwichType);
+		SandwichBox.getSelectionModel().selectFirst();
+		//Image image = new Image(file.toURI().toString());
+		if (SandwichBox.getValue() == "Chicken") 
+		{
+			setIngredients.setItems(ChickenList);
+			
+			//imageChooser.setImage(image);
+		}
 		ingredientList.setItems(fullList);
 	}
 
