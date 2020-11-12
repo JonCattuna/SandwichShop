@@ -16,7 +16,7 @@ public class menuController {
 
 	@FXML
 	private ComboBox<String> SandwichBox;
-	//Image image = new Image("popeyes.jpg");
+	
 	//File file = new File("popeyes.jpg");
 	
 	//Image image = new Image("popeyes.png");
@@ -102,7 +102,7 @@ public class menuController {
 		addList.removeAll(addList);
 		addedIngredients.setItems(addList);
 		ingredientList.setItems(fullList);
-		SandwichBox.setValue(null);;
+		//SandwichBox.setValue(null);;
 		counter = 0;
 
 	}
@@ -128,19 +128,21 @@ public class menuController {
 		if (SandwichBox.getValue() == "Burger") 
 		{
 			setIngredients.setItems(BurgerList);
-			//Image image = new Image("burger.png");
-			//imageChooser.setImage(image);
+			Image burgerImage = new Image("burger3.jpg");
+			imageChooser.setImage(burgerImage);
 		}
 		if (SandwichBox.getValue() == "Chicken") 
 		{
 			setIngredients.setItems(ChickenList);
-			///Image image = new Image("popeyes.png");
+			Image chickenImage = new Image("popeyes.jpg");
+			imageChooser.setImage(chickenImage);
 			//imageChooser.setImage(image);
 		}
 		if (SandwichBox.getValue() == "Fish") 
 		{
 			setIngredients.setItems(FishList);
-			//Image image = new Image("fillet.png");
+			Image fishImage = new Image("fillet.jpg");
+			imageChooser.setImage(fishImage);
 			//imageChooser.setImage(image);
 		}
 	}
@@ -150,6 +152,8 @@ public class menuController {
 		
 		SandwichBox.getItems().addAll(sandwichType);
 		SandwichBox.getSelectionModel().selectFirst();
+		Image image = new Image("popeyes.jpg");
+		imageChooser.setImage(image);
 		//Image image = new Image(file.toURI().toString());
 		if (SandwichBox.getValue() == "Chicken") 
 		{
